@@ -3,7 +3,7 @@ class ProfileController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @user = current_user
+    # @user = current_user
   end
 
   private
