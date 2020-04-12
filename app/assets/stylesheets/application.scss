@@ -175,12 +175,15 @@ body {
 
 /*-----------------------sidebar-search------------------------*/
 
-.sidebar-wrapper .sidebar-search > div {
-    padding: 10px 20px;
-    .input-group input {
+.sidebar-wrapper .sidebar-search form {
+    padding: 20px;
+    input {
         width: 100%;
         padding: 7px;
         border-radius: 4px;
+    }
+    button {
+        display: none;
     }
 }
 
