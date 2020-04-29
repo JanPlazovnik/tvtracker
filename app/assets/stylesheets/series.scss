@@ -1,3 +1,51 @@
 // Place all the styles related to the series controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .card-serie {
+        max-width: 170px;
+        width: 100%;
+        margin: 10px 10px 10px 0;
+        display: flex;
+        flex-direction: column;
+        // overflow:hidden;
+        position: relative;
+        .card-serie-actions {
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            .btn-add {
+                padding: 7px;
+                margin-bottom: 5px;
+                border-radius: 4px;
+                background-color: rgb(182, 182, 182);
+                color: #121212;
+                text-decoration: none;
+                font-size: .9em;
+                transition: all 0.1s cubic-bezier(0.33, -0.25, 0.77, 1.13);
+                &:hover {
+                    background-color: rgb(110, 110, 110);  
+                }
+            }
+        }
+        img {
+            width: 170px;
+            height: 270px;
+            border-radius: 5px;
+            box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+            background-size: cover;
+        }
+        p {
+            margin: 5px 0;
+            color: #121212;
+            font-size: 1.2em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

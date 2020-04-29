@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_125421) do
+ActiveRecord::Schema.define(version: 2020_04_28_205602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2020_04_12_125421) do
     t.text "summary", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tvdb_id"
+    t.string "image"
+    t.string "status"
+    t.datetime "first_aired"
+  end
+
+  create_table "series_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "series_id", null: false
+    t.index ["series_id"], name: "index_series_users_on_series_id"
+    t.index ["user_id"], name: "index_series_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
