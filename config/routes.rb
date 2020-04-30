@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :episodes
   resources :series, :only => [:index] do
     collection do
       post "add", to: "series#add"
