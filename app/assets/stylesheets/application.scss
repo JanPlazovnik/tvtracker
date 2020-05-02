@@ -43,6 +43,7 @@
 body {
     font-size: 0.9rem;
 }
+
 .page-wrapper .sidebar-wrapper,
 .sidebar-wrapper .sidebar-brand > a,
 .sidebar-wrapper .sidebar-dropdown > a:after,
@@ -85,11 +86,11 @@ body {
     left: 0px;
 }
 
-@media screen and (min-width: 768px) {
+// @media screen and (min-width: 768px) {
     .page-wrapper.toggled .page-content {
-        padding-left: 300px;
+        padding-left: 260px;
     }
-}
+// }
 
 .sidebar-wrapper {
     width: 260px;
@@ -147,15 +148,18 @@ body {
 .sidebar-wrapper .sidebar-header {
     padding: 20px;
     overflow: hidden;
+    display: flex;
+    flex-direction: col;
+    justify-content: space-around;
 }
 
 .sidebar-wrapper .sidebar-header .user-pic {
-    float: left;
-    width: 60px;
-    padding: 2px;
-    border-radius: 12px;
-    margin-right: 15px;
-    overflow: hidden;
+    // float: left;
+    // width: 60px;
+    // padding: 2px;
+    // border-radius: 12px;
+    // margin-right: 15px;
+    // overflow: hidden;
 }
 
 .sidebar-wrapper .sidebar-header .user-pic img {
@@ -266,15 +270,14 @@ body {
     display: inline-block;
     width: 100%;
     padding-left: 0px;
-    padding-top: 20px;
 }
 
 .page-wrapper .page-content > div {
-    padding: 20px 40px;
+    // padding: 20px 40px;
 }
 
 .page-wrapper .page-content {
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 /*------scroll bar---------------------*/

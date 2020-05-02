@@ -1,3 +1,59 @@
-// Place all the styles related to the episodes controller here.
+// Place all the styles related to the episode controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.episode-wrapper {
+    .header {
+        position: relative;
+        height: 250px;
+        width: 100%;
+        overflow: hidden;
+        .episode-banner {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+        }
+        .episode-info {
+            // position: absolute;
+            // bottom: 20px;
+            // left: 20px;
+            z-index: 400;
+            color: #fff;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h2 {
+                font-size: 3em;
+                font-weight: bold;
+                z-index: 400;
+            }
+            span {
+                color: rgb(150, 150, 150);
+            }
+        }
+        .dark-overlay {
+            position: absolute;
+            z-index: 100;
+            bottom: 0;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+        }
+    }
+    .show-meta {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid #ccc;
+        span {
+            font-size: 1em;
+            color: #121212;
+        }
+        p {
+            font-size: 1em;
+            padding: 5px 0;
+            color: rgb(150, 150, 150);
+        }
+    }
+}

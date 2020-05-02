@@ -1,3 +1,78 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.profile-wrapper {
+    .header {
+        position: relative;
+        height: 250px;
+        width: 100%;
+        overflow: hidden;
+        .profile-banner {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+        }
+        .profile-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 400;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            .profile-info-text {
+                padding-left: 20px;
+                h2 {
+                    font-size: 1.4em;
+                    line-height: 1.3em;
+                }
+                span {
+                    color: rgb(150, 150, 150);
+                }
+            }
+        }
+        .dark-overlay {
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,.5);
+        }
+    }
+    .shows-wrapper {
+        margin: 5px 0;
+        h2 {
+            font-size: 1.4em;
+            line-height: 1.3em;
+        }
+        .all {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .card-serie {
+                max-width: 170px;
+                width: 100%;
+                margin: 10px 10px 10px 0;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                img {
+                    width: 170px;
+                    height: 270px;
+                    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+                    background-size: cover;
+                }
+                p {
+                    margin: 5px 0;
+                    color: #121212;
+                    font-size: 1.2em;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

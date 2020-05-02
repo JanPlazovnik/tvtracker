@@ -1,3 +1,26 @@
-<h1>profile page goes here, one day</h1>
-here's an email meanwhile: 
-<%= @user.email %>
+<% content_for :title, @user.username %>
+<div class="profile-wrapper">
+    <div class="header">
+        <div class="profile-banner" style="background-image: url('https://external-preview.redd.it/Twutp_v09M0SAtte_TjWMngcjbJRar8r9Tmfdwywn_g.jpg?auto=webp&s=39e25f7fb1aaff1993dc45d8f1c7a25cf74f6e1b');">
+            <div class="profile-info">
+                <h2 style="height: 60px; width: 60px; color: #121212; font-size: 1.6em; background-color: lightblue; border-radius: 10px; display: inline-flex; justify-content: center; align-items: center"><%= profileInitials %></h2>
+                <div class="profile-info-text">
+                    <h2><%= @user.username %></h2>
+                    <span>Member for <%= time_ago_in_words(@user.created_at) %></span>
+                </div>
+            </div>
+            <div class="dark-overlay"></div>
+        </div>
+    </div>
+    <div class="shows-wrapper">
+        <h2>All shows:</h2>
+        <div class="all">
+        <% @user.series.each do |show| %>
+            <div class="card-serie">
+                <%= image_tag urlmagic('https://proxy.plazovnik.si?url=https://thetvdb.com', show[:image]), :alt => show[:title]%>
+                <p><%= link_to show[:title], series_path(show) %></p>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>

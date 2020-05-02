@@ -2,15 +2,16 @@ class Series < ApplicationRecord
   #   require "excon"
   has_and_belongs_to_many :users
   has_many :seasons
-  def self.search(query)
-    if query
-      response = Excon.get("https://api.thetvdb.com/search/series?name=#{query}", :headers => { "Authorization" => "Bearer #{self.fetch_token}" })
-      return nil if response.status != 200
-      JSON.parse(response.body)["data"]
-    else
-      all
-    end
-  end
+
+  # def self.search(query)
+  #   if query
+  #     response = Excon.get("https://api.thetvdb.com/search/series?name=#{query}", :headers => { "Authorization" => "Bearer #{self.fetch_token}" })
+  #     return nil if response.status != 200
+  #     JSON.parse(response.body)["data"]
+  #   else
+  #     all
+  #   end
+  # end
 
   def self.fetch_token
     Rails.cache.fetch("#{cache_versioning}/token", expires_in: 23.hours) do

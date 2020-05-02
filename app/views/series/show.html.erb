@@ -1,1 +1,40 @@
-
+<% content_for :title, @series.title %>
+<div class="series-wrapper">
+    <div class="header">
+        <div class="series-banner" style="background-image: url('<%= urlmagic("https://proxy.plazovnik.si?url=https://thetvdb.com", @series.image)%>');">
+            <div class="series-info">
+                <h2><%= @series.title %></h2>
+            </div>
+            <div class="dark-overlay"></div>
+        </div>
+    </div>
+    <div class="show-meta">
+        <% if @series.status == "Continuing"%>
+            <span><%= @series.airs_day_of_week %> at <%= @series.airs_time %></span> &middot;
+        <% end %>
+        <span><%= @series.seasons.all.count %></span> &middot;
+        <span><%= @series.status %></span>
+        <p><%= @series.summary %></p>
+    </div>
+    <div class="series-container">
+    <% @series.seasons.order("number asc").each do |season| %>
+        <div class="season">Season <%= season.number%></div>
+        <table>
+            <tr>
+                <td>Episode</td>
+                <td>Title</td>
+                <td>Aired</td>
+            </tr>
+        <% season.episodes.order("date_aired, title asc").each_with_index do |episode, index| %>
+            <%= link_to episode_path(episode) do %>
+                <tr>
+                    <td><%= index + 1 %></td> 
+                    <td><%= link_to episode.title, episode_path(episode) %></td>
+                    <td><%= episode.date_aired.to_date if episode.date_aired %></td>
+                </tr>
+            <% end %>
+        <% end %>
+        </table>
+    <% end %>
+    </div>
+</div>

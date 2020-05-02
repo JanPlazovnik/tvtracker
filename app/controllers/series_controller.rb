@@ -43,6 +43,7 @@ class SeriesController < ApplicationController
   end
 
   def show
+    FetchEpisodesJob.perform_later(@series.tvdb_id, true)
   end
 
   def add

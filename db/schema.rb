@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_153622) do
+ActiveRecord::Schema.define(version: 2020_05_02_160555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,17 @@ ActiveRecord::Schema.define(version: 2020_04_29_153622) do
     t.integer "tvdb_episode_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ep_number"
+    t.datetime "date_aired"
     t.index ["season_id"], name: "index_episodes_on_season_id"
     t.index ["tvdb_episode_id"], name: "index_episodes_on_tvdb_episode_id", unique: true
+  end
+
+  create_table "episodes_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "episode_id", null: false
+    t.index ["episode_id", "user_id"], name: "index_episodes_users_on_episode_id_and_user_id"
+    t.index ["user_id", "episode_id"], name: "index_episodes_users_on_user_id_and_episode_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -45,6 +54,9 @@ ActiveRecord::Schema.define(version: 2020_04_29_153622) do
     t.string "image"
     t.string "status"
     t.datetime "first_aired"
+    t.string "airs_day_of_week"
+    t.string "airs_time"
+    t.integer "runtime"
   end
 
   create_table "series_users", id: false, force: :cascade do |t|
@@ -62,8 +74,12 @@ ActiveRecord::Schema.define(version: 2020_04_29_153622) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

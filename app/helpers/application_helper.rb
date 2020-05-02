@@ -12,4 +12,7 @@ module ApplicationHelper
       return "https://www.plazovnik.si/media/files/no_img.jpg"
     end
   end
+  def profileInitials
+    current_user.first_name[0,1].upcase + current_user.last_name[0,1].upcase
+  end
 end
