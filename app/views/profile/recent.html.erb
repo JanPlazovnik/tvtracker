@@ -1,5 +1,8 @@
 <div class="recent--wrapper">
 <h2>Recent comments:</h2>
+<% if @comments.blank? %>
+<p>Looks like you haven't commented on any episodes recently.</p>
+<% end %>
 <% @comments.each do |comment| %>
   <div class="card">
     <div class="content">
@@ -15,6 +18,9 @@
 
 <div class="recent--wrapper">
 <h2>Recently watched episodes:</h2>
+<% if @comments.blank? %>
+<p>Looks like you haven't watched any episodes recently..</p>
+<% end %>
 <% @episodes.each do |ep| %>
   <div class="card">
     <div class="content">
@@ -30,6 +36,9 @@
 
 <div class="recent--wrapper">
 <h2>Recently added series:</h2>
+<% if @comments.blank? %>
+<p>Looks like you haven't added any shows recently.</p>
+<% end %>
 <% @series.each do |show| %>
   <div class="card">
     <div class="content">
