@@ -88,12 +88,13 @@ h2.search-results {
             // position: absolute;
             // bottom: 20px;
             // left: 20px;
-            z-index: 400;
-            color: #fff;
-            height: inherit;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+			z-index: 400;
+			color: #fff;
+			height: inherit;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
             h2 {
                 font-size: 3em;
                 font-weight: bold;
@@ -102,6 +103,31 @@ h2.search-results {
             span {
                 color: rgb(150, 150, 150);
             }
+            a {
+				padding: 15px;
+				margin: 15px 0;
+				z-index: 400;
+				border-radius: 5px;
+				background-color: rgb(209, 209, 209);
+				font-weight: bold;
+				font-size: 1em;
+				text-decoration: none;
+				color: #121212;
+				box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+				transition: all 0.2s cubic-bezier(0.33, -0.25, 0.77, 1.13);
+				&:hover {
+					background-color: rgb(175, 175, 175);
+				}
+				&.added {
+                    span {
+                        color: #000;
+                    }
+					background-color: rgb(79, 190, 255);
+					&:hover {
+						background-color: rgb(66, 160, 214);
+					}
+                }
+			}
         }
         .dark-overlay {
             position: absolute;

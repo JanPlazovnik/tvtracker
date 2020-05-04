@@ -4,7 +4,14 @@
 <div class="card-wrapper">
 <% @series.each do |show| %>
     <div class="card-serie">
-        <%= link_to add_series_index_path(show), class: getAddedClass(show[:tvdb_id]), method: :post do %>
+        <% 
+            if show[:stored] 
+                url = adduser_series_index_path(show) 
+            else
+                url = add_series_index_path(show)
+            end
+        %>
+        <%= link_to url, id: "added-btn-js", class: getAddedClass(show[:tvdb_id]), method: :post do %>
             <i class="uil uil-check"></i>
         <% end %>
         <%= link_to addnouser_series_index_path(show), method: :post do %>
@@ -14,3 +21,14 @@
     </div>
 <% end %>
 </div>
+
+<script>
+    const addBtn = $('*#added-btn-js');
+
+    addBtn.each(function() {
+        $(this).on('click', function(e) {
+            $(this).toggleClass("added")
+        })
+    })
+
+</script>

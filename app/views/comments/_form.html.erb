@@ -1,0 +1,8 @@
+<%= form_with(model: comment, local: true) do |form| %>
+
+    <div class="comments-body">
+      <%= form.hidden_field :episode, :value => @episode.id %>
+      <%= form.text_area :body, :placeholder => "Write a comment..." %>
+      <%= form.submit "Submit"%>
+    </div>
+<% end %>

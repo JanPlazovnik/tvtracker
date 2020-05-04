@@ -1,4 +1,19 @@
 <div class="recent--wrapper">
+<h2>Recent comments:</h2>
+<% @comments.each do |comment| %>
+  <div class="card">
+    <div class="content">
+        <h1>On: <%= comment.episode.title %></h1>
+        <p><%= truncate comment.body, length: 150 %></p>
+    </div>
+    <div class="actions">
+      <%= link_to "View episode page", episode_path(comment.episode) %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<div class="recent--wrapper">
 <h2>Recently watched episodes:</h2>
 <% @episodes.each do |ep| %>
   <div class="card">

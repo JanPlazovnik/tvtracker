@@ -5,6 +5,8 @@ class EpisodesController < ApplicationController
   # GET /episodes/1
   # GET /episodes/1.json
   def show
+    @comment = @episode.comments.build
+    @comments = @episode.comments.all.order(created_at: :desc)
   end
 
   def watch

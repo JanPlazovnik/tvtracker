@@ -34,5 +34,9 @@ module ApplicationHelper
     return ["btn-add", "added"] if current_user.series.any? {|show| show.tvdb_id == id}
     ["btn-add"]
   end
+  def getAddedText(id)
+    return "Remove" if current_user.series.any? {|show| show.tvdb_id == id}
+    "Add"
+  end
 
 end

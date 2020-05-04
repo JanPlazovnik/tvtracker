@@ -42,6 +42,16 @@ class SeriesController < ApplicationController
 
   def show
     FetchEpisodesJob.perform_later(@series.tvdb_id, true)
+    @test = Array.new
+    @test << {
+      :tvdb_id => @series.tvdb_id,
+      :title => @series.title.to_s,
+      :summary => @series.summary,
+      :image => @series.image,
+      :first_aired => @series.first_aired,
+      :status => @series.status,
+      :stored => true      
+    }
   end
 
   def add
@@ -83,6 +93,12 @@ class SeriesController < ApplicationController
     series.status = params["status"]
     series.save
     redirect_to series
+  end
+
+  def adduser
+    show = Series.where(tvdb_id: params["tvdb_id"])
+    return current_user.series.delete(show[0]) if current_user.series.include?(show[0])
+    current_user.series << show
   end
 
   private

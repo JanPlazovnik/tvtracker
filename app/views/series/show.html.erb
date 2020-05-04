@@ -4,6 +4,9 @@
         <div class="series-banner" style="background-image: url('<%= urlmagic("https://proxy.plazovnik.si?url=https://thetvdb.com", @series.image)%>');">
             <div class="series-info">
                 <h2><%= @series.title %></h2>
+                <%= link_to (adduser_series_index_path(@test).sub! '.', '?'), id: "added-btn-js", class: getAddedClass(@series.tvdb_id), method: :post do %>
+                    <span id="added-js"><%= getAddedText(@series.tvdb_id) %></span>
+                <% end %>
             </div>
             <div class="dark-overlay"></div>
         </div>
@@ -45,3 +48,16 @@
     <% end %>
     </div>
 </div>
+
+<script>
+    const addBtn = $('#added-btn-js');
+    const addText = $('#added-js');
+
+    addBtn.click(() => {
+        if (addBtn.hasClass("added"))
+            addText.text("Add");
+        else
+            addText.text("Remove");
+        addBtn.toggleClass("added");
+    })
+</script>

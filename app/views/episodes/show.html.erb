@@ -4,7 +4,9 @@
         <div class="episode-banner">
             <div class="episode-info">
                 <h2><%= @episode.title %></h2>
-                <%= link_to getWatchedText(@episode), watch_episode_path(@episode), method: :put, class: getWatchedClass(@episode) %>
+                <%= link_to watch_episode_path(@episode), method: :put, id: "added-btn-js", class: getWatchedClass(@episode) do %>
+                    <span id="added-js"><%= getWatchedText(@episode) %></span>
+                <% end %>
             </div>
             <div class="dark-overlay"></div>
         </div>
@@ -13,5 +15,40 @@
         <%= whipUpEpisodeMeta(@episode) %>
     </div>
     <div class="episode-container">
+    <h2>Episode discussions:</h2>
+    <%= render partial: 'comments/form', locals: { comment: @comment, episode: @episode } if user_signed_in? %>
+    <% @comments.each do |comment| %>
+        <div class="comment" id="comment-js">
+            <div class="comment-inner">
+                <div>
+                    <span><%= comment.user.username %></span>
+                    <span class="comment-time"><%= time_ago_in_words(comment.created_at) %> ago</span>
+                    <%= link_to 'Delete', comment_path(comment), method: :delete, id: 'comment-delete-js' if user_signed_in? && comment.user == current_user %>
+                </div>
+                <p><%= comment.body %></p>
+            </div>
+        </div>
+    <% end %>
     </div>
 </div>
+
+<script>
+    const addBtnE = $('#added-btn-js');
+    const addTextE = $('#added-js');
+
+    const delcom = $('*#comment-delete-js');
+
+    addBtnE.click(() => {
+        if (addBtnE.hasClass("watched"))
+            addTextE.text("WATCHED?");
+        else
+            addTextE.text("WATCHED!");
+        addBtnE.toggleClass("watched");
+    })
+
+    delcom.each(function() {
+        $(this).on('click', function(e) {
+            $(this).parent().parent().parent().remove()
+        })
+    })
+</script>

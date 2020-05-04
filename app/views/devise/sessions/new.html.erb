@@ -1,5 +1,3 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -11,16 +9,29 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+
 
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
+<div class="ezfix">
 <%= render "devise/shared/links" %>
+</div>
+<style>
+  form, .ezfix {
+    padding: 20px;
+  }
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    margin: 10px 0;
+    max-width: 350px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(236, 236, 236);
+  }
+</style>
