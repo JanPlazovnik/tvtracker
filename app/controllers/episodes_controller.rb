@@ -1,13 +1,21 @@
 class EpisodesController < ApplicationController
-  before_action :set_episode, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_episode, only: [:show, :watch]
 
   # GET /episodes/1
   # GET /episodes/1.json
   def show
   end
 
-  def done
-    
+  def watch
+    return current_user.episodes.delete(@episode) if current_user.episodes.include?(@episode)
+    show = Series.find(@episode.season.series_id)
+    unless current_user.series.include?(show)
+      p "user hasn't added the show to their list yet"
+      current_user.series << show
+    end
+    p "marking episode as watched"
+    current_user.episodes << @episode 
   end
 
   private
