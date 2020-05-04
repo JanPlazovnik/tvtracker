@@ -157,23 +157,6 @@ h2.search-results {
         max-width: 960px;
         margin: 0 auto;
         padding: 20px;
-        .no-seasons {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            color: rgb(148, 147, 147);
-            h2 {
-                font-size: 2em;
-            }
-            i {
-                font-size: 3.5em;
-            }
-            h3 {
-                font-size: 1.75em;
-            }
-        }
 
         table {
             width: 100%;
@@ -210,5 +193,24 @@ h2.search-results {
                 color: rgb(150, 150, 150);
             }
         }
+    }
+}
+
+.no-seasons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-top: 30px;
+    color: rgb(148, 147, 147);
+    h2 {
+        font-size: 2em;
+    }
+    i {
+        font-size: 3.5em;
+    }
+    h3 {
+        font-size: 1.75em;
     }
 }
