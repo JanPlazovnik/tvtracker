@@ -2,6 +2,13 @@
 <h2 class="search-results">TV Shows matching "<%= params[:q] %>"</h2>
 <% end %>
 <div class="card-wrapper">
+<% if @series.blank? %>
+<div class="no-seasons">
+    <h2>There doesn't seem to be anything here</h2>
+    <i class="uil uil-sad-squint"></i>
+    <h3>Use the search to look for shows you watch.</h3>
+</div>
+<% end %>
 <% @series.each do |show| %>
     <div class="card-serie">
         <% 
