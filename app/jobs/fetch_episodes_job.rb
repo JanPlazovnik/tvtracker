@@ -3,6 +3,7 @@ class FetchEpisodesJob < ApplicationJob
   queue_as :default
 
   def perform(id, cancelIfEpisodesExists)
+    p id
     response = fetch(id, 1)
     if response.status != 200
       p response.status
