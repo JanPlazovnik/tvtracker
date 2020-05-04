@@ -3,76 +3,139 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .profile-wrapper {
-    .header {
-        position: relative;
-        height: 250px;
-        width: 100%;
-        overflow: hidden;
-        .profile-banner {
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 100%;
-        }
-        .profile-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 400;
-            color: #fff;
-            display: flex;
-            flex-direction: row;
-            .profile-info-text {
-                padding-left: 20px;
-                h2 {
-                    font-size: 1.4em;
-                    line-height: 1.3em;
-                }
-                span {
-                    color: rgb(150, 150, 150);
-                }
-            }
-        }
-        .dark-overlay {
-            position: absolute;
-            bottom: 0;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0,0,0,.5);
-        }
+	.header {
+		position: relative;
+		height: 250px;
+		width: 100%;
+		overflow: hidden;
+		.profile-banner {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 100%;
+		}
+		.profile-info {
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+			z-index: 400;
+			color: #fff;
+			display: flex;
+			flex-direction: row;
+			.profile-info-text {
+				padding-left: 20px;
+				h2 {
+					font-size: 1.4em;
+					line-height: 1.3em;
+				}
+				span {
+					color: rgb(150, 150, 150);
+				}
+			}
+		}
+		.dark-overlay {
+			position: absolute;
+			bottom: 0;
+			top: 0;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+	.shows-wrapper {
+		// margin: 5px 0;
+		padding: 20px;
+		h2 {
+			font-size: 1.4em;
+			line-height: 1.3em;
+		}
+		.all {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			.card-serie {
+				max-width: 170px;
+				width: 100%;
+				margin: 10px 10px 10px 0;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				a {
+					margin: 5px 0;
+					color: #121212;
+					font-size: 1.2em;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					text-decoration: none;
+					img {
+						width: 170px;
+						height: 270px;
+						box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+						background-size: cover;
+					}
+					p {
+						margin: 5px 0;
+						color: #121212;
+						font-size: 1.2em;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+		}
+	}
+}
+
+.recent--wrapper {
+    padding: 20px;
+    h2 {
+        font-size: 1.4em;
+        line-height: 1.3em;
     }
-    .shows-wrapper {
-        margin: 5px 0;
-        h2 {
-            font-size: 1.4em;
-            line-height: 1.3em;
-        }
-        .all {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .card-serie {
-                max-width: 170px;
-                width: 100%;
-                margin: 10px 10px 10px 0;
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                img {
-                    width: 170px;
-                    height: 270px;
-                    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
-                    background-size: cover;
-                }
-                p {
-                    margin: 5px 0;
-                    color: #121212;
-                    font-size: 1.2em;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-            }
-        }
-    }
+	.card {
+        background-color: #fafafa;
+        margin: 15px 0;
+		max-width: 700px;
+		width: 100%;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+		overflow: hidden;
+		font-family: "Rubik", sans-serif;
+		.content {
+			padding: 20px;
+			h1 {
+				color: rgb(69, 138, 182);
+				font-size: 1.3em;
+				padding: 2px 0;
+			}
+			h2,
+			p {
+				color: rgb(132, 196, 236);
+				font-size: 1.1em;
+			}
+			p {
+				margin: 25px 0 0 0;
+			}
+		}
+		.actions {
+			padding: 0 20px 20px 20px;
+			a {
+				padding: 15px;
+				text-decoration: none;
+				background-color: #ececec;
+				color: rgb(132, 196, 236);
+				//width: 50%;
+				margin: 0 auto;
+				display: block;
+				text-align: center;
+				// border-radius: 5px;
+				transition: all 0.2s cubic-bezier(0.33, -0.25, 0.77, 1.13);
+				font-size: 0.95em;
+				&:hover {
+					background-color: rgb(132, 196, 236);
+					color: hsl(210, 36%, 96%);
+				}
+			}
+		}
+	}
 }
