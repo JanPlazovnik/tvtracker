@@ -1,0 +1,29 @@
+<div class="recent--wrapper">
+<h2>Recently watched episodes:</h2>
+<% @episodes.each do |ep| %>
+  <div class="card">
+    <div class="content">
+        <h1><%= ep.title %></h1>
+        <p><%= truncate ep.summary, length: 150 %></p>
+    </div>
+    <div class="actions">
+      <%= link_to "View episode page", episode_path(ep) %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<div class="recent--wrapper">
+<h2>Recently added series:</h2>
+<% @series.each do |show| %>
+  <div class="card">
+    <div class="content">
+        <h1><%= show.title %></h1>
+        <p><%= truncate show.summary, length: 150 %></p>
+    </div>
+    <div class="actions">
+      <%= link_to "View show page", series_path(show) %>
+    </div>
+  </div>
+<% end %>
+</div>

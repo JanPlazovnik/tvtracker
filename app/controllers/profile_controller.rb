@@ -1,9 +1,15 @@
 class ProfileController < ApplicationController
-  # before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!
   before_action :set_user, only: [:show]
 
   def show
     # @user = current_user
+  end
+
+  def recent
+    # maybe it's okay
+    @episodes = current_user.episodes.order("created_at desc").limit(10)
+    @series = current_user.series.order("created_at desc").limit(5)
   end
 
   private

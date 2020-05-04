@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resources :episodes, :except => [:index] do 
     member do
-      put "done", to: "series#done"
+      put "watch", to: "episodes#watch"
     end
   end
   resources :series, :only => [:index, :show] do
     collection do
       post "add", to: "series#add"
+      post "addnouser", to: "series#addnouser"
     end
   end
   devise_for :users
@@ -14,5 +15,9 @@ Rails.application.routes.draw do
   get "/", to: redirect(path: "/to-watch")
   get "to-watch", to: "series#index"
   # get "users/:id/profile", to: "profile#show"
-  resources :profile
+  resources :profile do
+    member do
+      get "recent", to: "profile#recent"
+    end
+  end
 end
