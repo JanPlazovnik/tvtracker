@@ -1,17 +1,16 @@
 <% if params[:q] %>
-<h2>TV Shows matching "<%= params[:q] %>"</h2>
+<h2 class="search-results">TV Shows matching "<%= params[:q] %>"</h2>
 <% end %>
-
 <div class="card-wrapper">
 <% @series.each do |show| %>
     <div class="card-serie">
-        <div class="card-serie-actions">
-            <%= link_to add_series_index_path(show), class: 'btn-add', method: :post do %>
-                Add
-            <% end %>
-        </div>
-        <%= image_tag urlmagic('https://proxy.plazovnik.si?url=https://thetvdb.com', show[:image]), :alt => show[:title]%>
-        <p><%= show[:title] %></p>
+        <%= link_to add_series_index_path(show), class: getAddedClass(show[:tvdb_id]), method: :post do %>
+            <i class="uil uil-check"></i>
+        <% end %>
+        <%= link_to addnouser_series_index_path(show), method: :post do %>
+            <%= image_tag urlmagic('https://proxy.plazovnik.si?url=https://thetvdb.com', show[:image]), :alt => show[:title]%>
+            <p><%= show[:title] %></p>
+        <% end %>
     </div>
 <% end %>
 </div>

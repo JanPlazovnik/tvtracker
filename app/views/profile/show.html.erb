@@ -16,10 +16,12 @@
         <h2>All shows:</h2>
         <div class="all">
         <% @user.series.each do |show| %>
-            <div class="card-serie">
-                <%= image_tag urlmagic('https://proxy.plazovnik.si?url=https://thetvdb.com', show[:image]), :alt => show[:title]%>
-                <p><%= link_to show[:title], series_path(show) %></p>
-            </div>
+            <%= link_to series_path(show) do %>
+                <div class="card-serie">
+                    <%= image_tag urlmagic('https://proxy.plazovnik.si?url=https://thetvdb.com', show[:image]), :alt => show[:title]%>
+                    <p><%= link_to show[:title], series_path(show) %></p>
+                </div>
+            <% end %>
         <% end %>
         </div>
     </div>

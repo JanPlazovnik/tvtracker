@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" src="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -62,6 +63,11 @@
               <li>
                 <%= link_to profile_path(current_user) do %>
                   <span>Profile</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to recent_profile_path(current_user) do %>
+                  <span>Recent activity</span>
                 <% end %>
               </li>
               <li>

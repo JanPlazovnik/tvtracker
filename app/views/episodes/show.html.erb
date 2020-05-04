@@ -1,17 +1,16 @@
-
+<% content_for :title, @episode.title %>
 <div class="episode-wrapper">
     <div class="header">
         <div class="episode-banner">
             <div class="episode-info">
                 <h2><%= @episode.title %></h2>
+                <%= link_to getWatchedText(@episode), watch_episode_path(@episode), method: :put, class: getWatchedClass(@episode) %>
             </div>
             <div class="dark-overlay"></div>
         </div>
     </div>
     <div class="show-meta">
-        <span><%= @episode.title %></span> &middot;
-        <span><%= @episode.date_aired.to_date if @episode.date_aired %></span>
-        <p><%= @episode.summary %></p>
+        <%= whipUpEpisodeMeta(@episode) %>
     </div>
     <div class="episode-container">
     </div>

@@ -17,6 +17,13 @@
         <p><%= @series.summary %></p>
     </div>
     <div class="series-container">
+    <% if @series.seasons.blank? %>
+        <div class="no-seasons">
+            <h2>There doesn't seem to be anything here</h2>
+            <i class="uil uil-sad-squint"></i>
+            <h3>Check again in a few minutes!</h3>
+        </div>
+    <% end %>
     <% @series.seasons.order("number asc").each do |season| %>
         <div class="season">Season <%= season.number%></div>
         <table>
