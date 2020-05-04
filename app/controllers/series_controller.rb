@@ -3,8 +3,6 @@ class SeriesController < ApplicationController
   before_action :set_series, only: [:show]
 
   def index
-    # return redirect_to to_watch_path if request.fullpath == "/series" # hacky?
-    # results = Series.search(params[:q])
     if params[:q] && !params[:q].empty?
       response = Excon.get("https://api.thetvdb.com/search/series?name=#{params[:q]}", :headers => { "Authorization" => "Bearer #{Series.fetch_token}" })
       if response.status != 200
@@ -13,11 +11,12 @@ class SeriesController < ApplicationController
         results = JSON.parse(response.body)["data"]
       end
     else
-      results = Series.joins(:users).where("users.id" => current_user.id)
+      results = Series.joins(:users).where("users.id" => current_user.id).select("series.*, series.tvdb_id as id")
     end
     @series = Array.new
     results.each do |show|
       stored = Series.where(tvdb_id: show["id"])
+      p stored
       if stored.present?
         @series << {
           :tvdb_id => stored[0].tvdb_id,
@@ -26,7 +25,7 @@ class SeriesController < ApplicationController
           :image => stored[0].image,
           :first_aired => stored[0].first_aired,
           :status => stored[0].status,
-          :stored => true,
+          :stored => true
         }
       else
         @series << {
@@ -39,7 +38,6 @@ class SeriesController < ApplicationController
         }
       end
     end
-    p "test"
   end
 
   def show
@@ -51,7 +49,7 @@ class SeriesController < ApplicationController
     if stored.present?
       FetchEpisodesJob.perform_later(params["tvdb_id"], true)
       if current_user.series.where(tvdb_id: params["tvdb_id"]).present?
-        p "asd"
+        # should i do something here?
       else
         current_user.series << stored
       end
@@ -68,6 +66,23 @@ class SeriesController < ApplicationController
       current_user.series << series
       current_user.save
     end
+  end
+  def addnouser
+    FetchEpisodesJob.perform_later(params["tvdb_id"], true)
+    series = Series.where(tvdb_id: params["tvdb_id"])
+    if series.length > 0
+      return redirect_to series[0]
+    end 
+
+    series = Series.new
+    series.tvdb_id = params["tvdb_id"]
+    series.title = params["title"]
+    series.summary = params["summary"]
+    series.image = params["image"]
+    series.first_aired = DateTime.parse(params["first_aired"])
+    series.status = params["status"]
+    series.save
+    redirect_to series
   end
 
   private
